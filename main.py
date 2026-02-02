@@ -9,8 +9,6 @@ import os
 import tensorflow as tf
 import gdown
 
-# MODEL DOWNLOAD SECTION 
-
 def download_models():
     os.makedirs("models", exist_ok=True)
 
@@ -26,8 +24,6 @@ def download_models():
             gdown.download(url, path, quiet=False)
 
 download_models()
-
-# CAPTION FUNCTION 
 
 def generate_caption(image_path, model_path, tokenizer_path, feature_extractor_path, max_length=34, img_size=224):
     caption_model = load_model(model_path)
@@ -56,8 +52,6 @@ def generate_caption(image_path, model_path, tokenizer_path, feature_extractor_p
         in_text += " " + word
 
     return in_text.replace("startseq", "").replace("endseq", "").strip()
-
-# STREAMLIT UI 
 
 def main():
     st.title("🖼️ Image Caption Generator")
